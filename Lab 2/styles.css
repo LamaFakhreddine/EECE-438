@@ -1,0 +1,87 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+body {
+  font-family: montserrat, arial, verdana;
+}
+
+.row{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form{
+  width: 30%;
+  height: fit-content;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 2rem 3rem;
+  position: relative;
+}
+
+.form-title{
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: #2C3E50;
+  margin-bottom: 1.5rem;
+}
+
+.form input{
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #2C3E50;
+  font-size: 0.9rem;
+}
+
+.table{
+  margin: 0 auto;
+  margin-top: 4rem;
+  height: fit-content;
+  text-align: left;
+  background: rgb(255, 255, 255);
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  position: relative;
+  color: #2C3E50;
+
+}
+
+.table-heading{
+  height: fit-content;
+  text-align: left;
+  background: #dadada;
+  border-radius: 3px;
+  padding: 2rem 3rem;
+  position: relative;
+}
+
+.table-heading th {
+  padding: 1rem 2rem;
+  font-size: 0.95rem;
+}
+
+.table td {
+  background: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
