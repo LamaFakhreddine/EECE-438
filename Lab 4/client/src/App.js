@@ -10,7 +10,6 @@ function App() {
   const [movieReviewList, setMovieReviewList] = useState([]);
   const [newReview, setNewReview] = useState("");
   const [movieSearchName, setMovieSearchName] = useState("");
-  const [movieFound, setMovieFound] = useState(true);
   const [searchResult, setSearchResult] = useState({}); 
 
   const sortMoviesByTitle = (data) => {
@@ -30,10 +29,10 @@ function App() {
     movieReviewList.forEach((val) => {
       if (val.movieName === movieSearchName) {
         setSearchResult(val);
-        setMovieFound(true);
         return;
-      }
-    });
+      } 
+    }
+    );
    };
 
   const submitReview = () => {
@@ -63,31 +62,31 @@ function App() {
 
   return (
     <div className="App">
-    <div className="form">
-      <label>
-        Search for a movie:
-      </label>
-      <input type="text" name="movieSearchName" onChange={(e)=>{
+    <h1>Movie Reviews</h1>
+
+    <div className="form" >
+      <input type="text" placeholder="Enter movie name" name="movieSearchName" onChange={(e)=>{
         setMovieSearchName(e.target.value)
       }}/>
     
-      <button onClick = {searchMovieByName}> Submit </button>
+      <button onClick = {searchMovieByName}> Search </button>
     </div>
 
-    {!movieFound && <h2> Could not find movie :(</h2>}
+    {searchResult.movieName == null && <p className="sorry-msg"> Sorry, could not find movie :(</p>}
 
     {searchResult.movieName != null && 
-        <div className="card">
-          <h1> {searchResult.movieName} </h1>
-          <p> {searchResult.movieReview} </p>
-        </div>   
+        <div className="movie-list">
+          <div className="card">
+            <h1> {searchResult.movieName} </h1>
+            <p className="movie-review"> {searchResult.movieReview} </p>
+          </div>  
+        </div> 
     }
 
     <br></br>
     <br></br>
 
 
-      <h1>Movie Reviews</h1>
       <div id="myForm" className="form">
         <label>Movie Name:</label>
         <input
@@ -106,38 +105,41 @@ function App() {
           }}
         />
 
-        <button type="submit" onClick={submitReview}> Submit </button>
-
-        {movieReviewList.map((val) => {
-          return (
-            <div className="card">
-              <h1> {val.movieName} </h1>
-              <p> {val.movieReview} </p>
-
-              <button
-                onClick={() => {
-                  deleteReview(val.movieName);
-                }}
-              >
-                Delete
-              </button>
-              <input
-                type="text"
-                id="updateInput"
-                onChange={(e) => {
-                  setNewReview(e.target.value);
-                }}
-              />
-              <button
-                onClick={() => {
-                  updateReview(val.movieName);
-                }}
-              >
-                Update
-              </button>
-            </div>
-          );
-        })}
+        <button type="submit" onClick={submitReview}> Add Review </button>
+        
+        <div className="movie-list">
+          {movieReviewList.map((val) => {
+            return (
+              <div className="card">
+                <h2> {val.movieName} </h2>
+                <p className="movie-review"> {val.movieReview} </p>
+                <div className="action-buttons">
+                  <input
+                    type="text"
+                    id="updateInput"
+                    onChange={(e) => {
+                      setNewReview(e.target.value);
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      updateReview(val.movieName);
+                    }}
+                  >
+                    Update
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteReview(val.movieName);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
