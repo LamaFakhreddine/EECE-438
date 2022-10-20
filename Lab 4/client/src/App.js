@@ -13,9 +13,8 @@ function App() {
   const [searchResult, setSearchResult] = useState({}); 
 
   const sortMoviesByTitle = (data) => {
-    const sortedList = [...data].sort((a, b) => {
-      return a.movieName > b.movieName; 
-    }); 
+    const sortedList = [...data].sort((a, b) => a.movieName.localeCompare(b.movieName));
+    console.log(sortedList);
     return sortedList; 
   }
 
@@ -27,6 +26,8 @@ function App() {
 
   const searchMovieByName = () => {
     movieReviewList.forEach((val) => {
+      console.log(movieSearchName)
+      console.log(val.movieName);
       if (val.movieName === movieSearchName) {
         setSearchResult(val);
         return;
