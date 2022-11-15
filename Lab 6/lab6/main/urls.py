@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
 
-app_name = "main"   
 
 urlpatterns = [
-    path("", views.homepage, name="homepage"),
-  
+    path("", views.contactList, name="contactList"),
+    path("search/", views.searchContacts, name="searchContacts"),
+    path("create/", views.createContact, name="createContact"),
+    path("edit/<str:pk>/", views.editContact, name="editContact"),
+    path("delete/<str:pk>/", views.deleteContact, name="deleteContact")
 ]

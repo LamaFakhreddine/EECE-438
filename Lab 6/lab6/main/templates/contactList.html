@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Contact List</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="d-flex p-3">
+        <form action="{% url 'searchContacts' %}" method="get">
+            <input type="text" name="search" placeholder="Search... " value="">
+            <input class="btn btn-primary" type="submit" value="Search">
+        </form>
+
+
+
+        <div class="ml-auto">
+            <a href="{% url 'createContact' %}"><button type="button" class="btn btn-primary">Add Contact</button></a>
+        </div>
+    </div>
+
+
+    <div class="container pb-5 d-flex flex-wrap">
+        {% for contact in contacts %}
+        <div class="card mt-3 mb-3 mr-5" style="width: 18rem;">
+        <div class="card-body">       
+            <h5 class="card-title mb-3">{{ contact.name }}</h5>
+            <p class="card-text"><span class="font-weight-bold">Profession:</span> {{ contact.profession }}</p>
+            <p class="card-text"><span class="font-weight-bold">Tel Number:</span> {{ contact.telephonNumber }}</p>
+            <p class="card-text"><span class="font-weight-bold">Mob Number:</span> {{ contact.mobileNumber }}</p>
+            <a style="margin-right: 30px;" href="{% url 'editContact' contact.pk%}">Edit</a>
+            <a style="margin-right: 30px;" href="{% url 'deleteContact' contact.pk%}">Remove</a>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

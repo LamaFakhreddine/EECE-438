@@ -1,8 +1,8 @@
 from django import forms
-from .models import Player
+from .models import Contact
 
-class PlayerForm(forms.ModelForm):
+class ContactForm(forms.ModelForm):
 
   class Meta:
-    model = Player
-    fields = ('name','height','team','ppg')
+    model = Contact
+    fields = ('name','profession','telephonNumber','mobileNumber')

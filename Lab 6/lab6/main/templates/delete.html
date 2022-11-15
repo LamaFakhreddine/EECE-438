@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Delete Contact</title>
+{% endblock title %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <br><br>
+        <div class="alert alert-danger" role="alert">
+            Are you sure you want to delete "{{ contact.name }}"?
+        </div>
+        
+        <div class="d-flex mt-2 mb-3 ">
+          <div class="mr-2">
+              <a href="{% url 'contactList' %}"><button type="button" class="btn btn-primary">Go Back</button></a>
+          </div>
+
+          <div>
+              <input class="btn btn-danger" type="submit" value="Confirm">
+          </div>
+        </div>
+    </form>
+{% endblock content %}
