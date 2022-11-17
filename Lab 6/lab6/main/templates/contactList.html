@@ -5,16 +5,20 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="d-flex p-3">
+    <h2 class="text-center p-1 text-primary">All Contacts</h2>
+    <hr/>
+
+    <div class="d-flex p-3 pb-4 align-items-center">
         <form action="{% url 'searchContacts' %}" method="get">
-            <input type="text" name="search" placeholder="Search... " value="">
-            <input class="btn btn-primary" type="submit" value="Search">
+            <input class="h-100" type="text" name="search" placeholder="Search..." value="">
+            <input class="btn btn-sm btn-primary" type="submit" value="Search">
         </form>
-
-
+        
+        <a class="ml-auto mr-3 btn btn-sm btn-secondary" href="{% url 'sortContacts' 'name' %}">Sort by Name</a>
+        <a class="btn btn-sm btn-secondary" href="{% url 'sortContacts' 'profession' %}">Sort by profession</a>
 
         <div class="ml-auto">
-            <a href="{% url 'createContact' %}"><button type="button" class="btn btn-primary">Add Contact</button></a>
+            <a href="{% url 'createContact' %}"><button type="button" class="btn btn-sm btn-primary">Add Contact</button></a>
         </div>
     </div>
 

@@ -12,18 +12,32 @@
     {% endblock title %}
   </head>
   <body>
-      {% load crispy_forms_tags %}
-
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand mx-auto" href="">
+    <div class="row w-100 vh-100">
+      <div class="d-flex flex-column flex-shrink-0 p-4 bg-light" style="width: 280px;">
+        <a href="/" style="font-size: 1.5rem;" class="d-flex align-items-center pl-4 mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
           My Contacts
         </a>
-      </nav>
-      <br><br>
-
-      <div class="container">
+        <hr/>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item pl-4">
+            <a href="{% url 'contactList' %}" class="nav-link link-dark" aria-current="page">
+              Home
+            </a>
+          </li>
+          <li class="nav-item pl-4">
+            <a href="{% url 'useTools' %}" class="nav-link link-dark">
+              Tools
+            </a>
+          </li>
+        </ul>
+        <hr />
+      </div>
+    
+      <div class="container pt-4">
         {% block content %}
         {% endblock content %}
       </div>
+    </div>
+
   </body>
 </html>
